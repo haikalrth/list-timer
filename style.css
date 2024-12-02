@@ -12,7 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    flex-direction: column; /* Tambahkan flex-direction untuk tampilan mobile */
+    flex-direction: column; /* Menggunakan flex-direction untuk tampilan mobile */
 }
 
 /* Main Container */
@@ -51,6 +51,11 @@ body {
 }
 
 .todo-app h2 img {
+    width: 30px;
+    margin-left: 10px;
+}
+
+.countdown-container h2 img {
     width: 30px;
     margin-left: 10px;
 }
