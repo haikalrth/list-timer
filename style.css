@@ -157,3 +157,87 @@ ul li span:hover {
     color: #333;
     text-align: center;
 }
+
+/* Media Query untuk Tampilan Mobile */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 20px;
+        height: auto;
+    }
+
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: none;
+    }
+
+    .todo-app, .countdown-container {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .todo-app {
+        margin-bottom: 20px;
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    input[type="text"], input[type="number"] {
+        width: 100%;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .time-inputs {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .time-inputs input {
+        width: 100%;
+    }
+
+    .timer-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    ul li {
+        font-size: 16px;
+        padding: 12px 8px 12px 40px;
+    }
+
+    ul li::before {
+        height: 24px;
+        width: 24px;
+        top: 14px;
+        left: 8px;
+    }
+
+    ul li span {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    #timer-display {
+        font-size: 36px;
+    }
+}
