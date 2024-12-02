@@ -7,12 +7,28 @@
 }
 
 body {
-    background: linear-gradient(135deg, #153677, #4e085f);
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    flex-direction: column; /* Menggunakan flex-direction untuk tampilan mobile */
+    background: linear-gradient(135deg, #153677, #4e085f);
+    background-size: 200% 200%; /* Membuat area gradien lebih besar untuk efek gerakan */
+    animation: gradientAnimation 8s ease infinite; /* Menggunakan animasi */
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%; /* Awal animasi */
+    }
+    50% {
+        background-position: 100% 50%; /* Gerakan ke kanan */
+    }
+    100% {
+        background-position: 0% 50%; /* Kembali ke awal */
+    }
 }
 
 /* Main Container */
@@ -176,9 +192,28 @@ ul li span:hover {
 /* Media Query untuk Tampilan Mobile */
 @media (max-width: 768px) {
     body {
-        flex-direction: column;
-        padding: 10px;
-        height: auto;
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #153677, #4e085f);
+        background-size: 150% 150%; /* Membuat gradasi lebih besar */
+        animation: gradientAnimation 8s ease infinite; /* Animasi berjalan terus-menerus */
+    }
+    
+    @keyframes gradientAnimation {
+        0% {
+            background-position: 0% 50%; /* Awal animasi */
+        }
+        50% {
+            background-position: 100% 50%; /* Gerakan ke kanan */
+        }
+        100% {
+            background-position: 0% 50%; /* Kembali ke awal */
+        }
     }
 
     .main-container {
@@ -217,10 +252,10 @@ ul li span:hover {
     }
 
     .time-inputs input {
-        width: 30%; /* Pastikan input tetap sebanding */
-        font-size: 12px; /* Ukuran font lebih kecil */
-        padding: 5px; /* Padding lebih kecil untuk menghemat ruang */
-        max-width: 40px; /* Lebar input lebih kecil untuk tampilan lebih kompak */
+        width: 30%; 
+        font-size: 12px; 
+        padding: 5px; 
+        max-width: 40px; 
     }
 
     .timer-buttons {
