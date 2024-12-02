@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List & Countdown Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="todo-app">
+            <h2>To-Do List<img src="images/icon.png" alt=""></h2>
+            <div class="row">
+                <input id="input-box" type="text" placeholder="Add a new task">
+                <button onclick="addTask()">Add Task</button>
+            </div>
+            <ul id="list-container"></ul>
+        </div>
+        
+        <div class="countdown-container">
+            <h2>Countdown Timer</h2>
+            <div class="time-inputs">
+                <input id="hours" type="number" placeholder="HH">
+                <input id="minutes" type="number" placeholder="MM">
+                <input id="seconds" type="number" placeholder="SS">
+            </div>
+            <div class="timer-buttons">
+                <button id="start-stop" onclick="toggleTimer()">Start</button>
+                <button id="reset" onclick="resetTimer()">Reset</button>
+            </div>
+            <div id="timer-display">00:00:00</div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
