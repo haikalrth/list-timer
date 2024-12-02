@@ -207,8 +207,7 @@ ul li span:hover {
     }
 
     .time-inputs {
-        flex-direction: column;
-        gap: 10px;
+        gap: 5px;
     }
 
     .time-inputs input {
