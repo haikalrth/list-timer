@@ -8,6 +8,8 @@
 
 body {
     background: linear-gradient(135deg, #153677, #4e085f);
+    background-size: cover; /* Menyediakan ukuran latar belakang yang menutupi seluruh area */
+    background-position: center; /* Memastikan latar belakang selalu di tengah */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -179,16 +181,19 @@ ul li span:hover {
         flex-direction: column;
         padding: 10px;
         height: auto;
+        background-size: cover; /* Menjaga ukuran background agar menutupi seluruh layar */
+        background-position: center; /* Menjaga posisi latar belakang tetap di tengah */
     }
 
     .main-container {
         flex-direction: column;
         align-items: center;
-        width: 100%;
+        width: 90%;
         max-width: none;
     }
 
     .todo-app, .countdown-container {
+        padding: 20px;
         width: 100%;
         margin-right: 0;
         margin-bottom: 20px;
