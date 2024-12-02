@@ -179,8 +179,6 @@ ul li span:hover {
         flex-direction: column;
         padding: 10px;
         height: auto;
-        background-size: cover; /* Menjaga ukuran background agar menutupi seluruh layar */
-        background-position: center; /* Menjaga posisi latar belakang tetap di tengah */
     }
 
     .main-container {
