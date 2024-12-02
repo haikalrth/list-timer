@@ -8,8 +8,6 @@
 
 body {
     background: linear-gradient(135deg, #153677, #4e085f);
-    background-size: cover; /* Menyediakan ukuran latar belakang yang menutupi seluruh area */
-    background-position: center; /* Memastikan latar belakang selalu di tengah */
     display: flex;
     justify-content: center;
     align-items: center;
