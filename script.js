@@ -1,119 +1,259 @@
-// To-Do List Functionality
-const inputBox = document.getElementById("input-box");
-const listContainer = document.getElementById("list-container");
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
 
-function addTask() {
-    if (inputBox.value === "") {
-        alert("You must write something!");
-    } else {
-        let li = document.createElement("li");
-        li.innerHTML = inputBox.value;
-        listContainer.appendChild(li);
-        let span = document.createElement("span");
-        span.innerHTML = "\u00d7";
-        li.appendChild(span);
+body {
+    background: linear-gradient(135deg, #153677, #4e085f);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column; /* Menggunakan flex-direction untuk tampilan mobile */
+}
+
+/* Main Container */
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    max-width: 1000px;
+    background: transparent;
+    flex-wrap: wrap; /* Agar elemen berbaris pada perangkat kecil */
+}
+
+/* To-Do App and Countdown */
+.todo-app, .countdown-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.todo-app {
+    flex: 2;
+    margin-right: 20px;
+}
+
+.countdown-container {
+    flex: 1;
+}
+
+/* Headings */
+.todo-app h2, .countdown-container h2 {
+    color: #002765;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.todo-app h2 img {
+    width: 30px;
+    margin-left: 10px;
+}
+
+.countdown-container h2 img {
+    width: 30px;
+    margin-left: 10px;
+}
+
+/* To-Do List Row */
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #edeef0;
+    border-radius: 30px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+}
+
+/* Input Fields */
+input[type="text"], input[type="number"] {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Time Inputs */
+.time-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.time-inputs input {
+    width: 30%;
+    text-align: center;
+}
+
+/* Buttons */
+.timer-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    border: none;
+    outline: none;
+    padding: 16px 50px;
+    background: #ff5945;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 40px;
+    width: 150px;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #d94636;
+}
+
+/* To-Do List Items */
+ul li {
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+
+ul li::before {
+    content: '';
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    background-image: url(images/unchecked.png);
+    background-size: cover;
+    background-position: center;
+    top: 12px;
+    left: 8px;
+}
+
+ul li.checked {
+    color: #555;
+    text-decoration: line-through;
+}
+
+ul li.checked::before {
+    background-image: url(images/checked.png);
+}
+
+ul li span {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    color: #555;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+ul li span:hover {
+    background: #edeef0;
+}
+
+#timer-display {
+    font-size: 48px;
+    margin-top: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Media Query untuk Tampilan Mobile */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        padding: 10px;
+        height: auto;
     }
-    inputBox.value = "";
-    saveData();
-}
 
-listContainer.addEventListener("click", function (e) {
-    if (e.target.tagName === "LI") {
-        e.target.classList.toggle("checked");
-        saveData();
-    } else if (e.target.tagName === "SPAN") {
-        e.target.parentElement.remove();
-        saveData();
-    }
-}, false);
-
-function saveData() {
-    localStorage.setItem("data", listContainer.innerHTML);
-}
-
-function showTask() {
-    listContainer.innerHTML = localStorage.getItem("data");
-}
-
-showTask();
-
-// Countdown Timer Functionality
-let countdown;
-const timerDisplay = document.getElementById('timer-display');
-const startStopButton = document.getElementById('start-stop');
-let isTimerRunning = false;
-let pausedTime = 0;
-
-// Tambahkan elemen audio
-const alarmSound = new Audio('sounds/alarm.mp3'); 
-
-function toggleTimer() {
-    if (isTimerRunning) {
-        stopTimer();
-    } else {
-        startTimer();
-    }
-}
-
-function startTimer() {
-    const hours = parseInt(document.getElementById('hours').value) || 0;
-    const minutes = parseInt(document.getElementById('minutes').value) || 0;
-    const seconds = parseInt(document.getElementById('seconds').value) || 0;
-    
-    if (hours === 0 && minutes === 0 && seconds === 0 && pausedTime === 0) {
-        alert("Please enter a valid time!");
-        return;
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: none;
     }
 
-    let totalTime = pausedTime || (hours * 3600 + minutes * 60 + seconds);
-    const now = Date.now();
-    const then = now + totalTime * 1000;
-    
-    displayTimeLeft(totalTime);
+    .todo-app, .countdown-container {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-    countdown = setInterval(() => {
-        const secondsLeft = Math.round((then - Date.now()) / 1000);
-        if (secondsLeft < 0) {
-            clearInterval(countdown);
-            timerDisplay.textContent = "Time's up!";
-            alarmSound.play(); 
-            isTimerRunning = false;
-            startStopButton.textContent = "Start";
-            pausedTime = 0;
-            return;
-        }
-        displayTimeLeft(secondsLeft);
-        pausedTime = secondsLeft;
-    }, 1000);
-    
-    isTimerRunning = true;
-    startStopButton.textContent = "Stop";
-}
+    .todo-app {
+        margin-bottom: 20px;
+    }
 
-function stopTimer() {
-    clearInterval(countdown);
-    isTimerRunning = false;
-    startStopButton.textContent = "Continue";
-}
+    .row {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
 
-function resetTimer() {
-    clearInterval(countdown);
-    timerDisplay.textContent = "00:00:00";
-    document.getElementById('hours').value = '';
-    document.getElementById('minutes').value = '';
-    document.getElementById('seconds').value = '';
-    startStopButton.textContent = "Start";
-    isTimerRunning = false;
-    pausedTime = 0;
-    alarmSound.pause();
-    alarmSound.currentTime = 0; 
-}
+    input[type="text"], input[type="number"] {
+        width: 100%;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
 
+    .time-inputs {
+        gap: 5px;
+    }
 
-function displayTimeLeft(seconds) {
-    const hours = Math.floor(seconds / 3600);
-    const remainderMinutes = Math.floor((seconds % 3600) / 60);
-    const remainderSeconds = seconds % 60;
-    const display = `${hours < 10 ? '0' : ''}${hours}:${remainderMinutes < 10 ? '0' : ''}${remainderMinutes}:${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`;
-    timerDisplay.textContent = display;
+    .time-inputs input {
+        width: 30%; /* Pastikan input tetap sebanding */
+        font-size: 12px; /* Ukuran font lebih kecil */
+        padding: 5px; /* Padding lebih kecil untuk menghemat ruang */
+        max-width: 40px; /* Lebar input lebih kecil untuk tampilan lebih kompak */
+    }
+
+    .timer-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    ul li {
+        font-size: 16px;
+        padding: 12px 8px 12px 40px;
+    }
+
+    ul li::before {
+        height: 24px;
+        width: 24px;
+        top: 14px;
+        left: 8px;
+    }
+
+    ul li span {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    #timer-display {
+        font-size: 36px;
+    }
 }
