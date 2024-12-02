@@ -45,7 +45,7 @@ let isTimerRunning = false;
 let pausedTime = 0;
 
 // Tambahkan elemen audio
-const alarmSound = new Audio('sounds/alarm.mp3'); // Pastikan file alarm.mp3 berada di folder sounds
+const alarmSound = new Audio('sounds/alarm.mp3'); 
 
 function toggleTimer() {
     if (isTimerRunning) {
@@ -76,7 +76,7 @@ function startTimer() {
         if (secondsLeft < 0) {
             clearInterval(countdown);
             timerDisplay.textContent = "Time's up!";
-            alarmSound.play(); // Mainkan suara alarm
+            alarmSound.play(); 
             isTimerRunning = false;
             startStopButton.textContent = "Start";
             pausedTime = 0;
@@ -105,10 +105,8 @@ function resetTimer() {
     startStopButton.textContent = "Start";
     isTimerRunning = false;
     pausedTime = 0;
-
-    // Hentikan suara alarm jika sedang dimainkan
     alarmSound.pause();
-    alarmSound.currentTime = 0; // Kembalikan audio ke awal
+    alarmSound.currentTime = 0; 
 }
 
 
