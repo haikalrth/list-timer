@@ -211,7 +211,10 @@ ul li span:hover {
     }
 
     .time-inputs input {
-        width: 100%;
+        width: 30%; /* Pastikan input tetap sebanding */
+        font-size: 12px; /* Ukuran font lebih kecil */
+        padding: 5px; /* Padding lebih kecil untuk menghemat ruang */
+        max-width: 40px; /* Lebar input lebih kecil untuk tampilan lebih kompak */
     }
 
     .timer-buttons {
