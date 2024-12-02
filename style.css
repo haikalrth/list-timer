@@ -1,3 +1,4 @@
+/* Reset Styles */
 * {
     margin: 0;
     padding: 0;
@@ -11,16 +12,20 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    flex-direction: column; /* Tambahkan flex-direction untuk tampilan mobile */
 }
 
+/* Main Container */
 .main-container {
     display: flex;
     justify-content: space-between;
     width: 70%;
     max-width: 1000px;
     background: transparent;
+    flex-wrap: wrap; /* Agar elemen berbaris pada perangkat kecil */
 }
 
+/* To-Do App and Countdown */
 .todo-app, .countdown-container {
     background: #fff;
     padding: 30px;
@@ -37,6 +42,7 @@ body {
     flex: 1;
 }
 
+/* Headings */
 .todo-app h2, .countdown-container h2 {
     color: #002765;
     display: flex;
@@ -49,6 +55,7 @@ body {
     margin-left: 10px;
 }
 
+/* To-Do List Row */
 .row {
     display: flex;
     align-items: center;
@@ -59,6 +66,7 @@ body {
     margin-bottom: 25px;
 }
 
+/* Input Fields */
 input[type="text"], input[type="number"] {
     flex: 1;
     border: none;
@@ -68,6 +76,7 @@ input[type="text"], input[type="number"] {
     font-size: 14px;
 }
 
+/* Time Inputs */
 .time-inputs {
     display: flex;
     justify-content: space-between;
@@ -79,6 +88,7 @@ input[type="text"], input[type="number"] {
     text-align: center;
 }
 
+/* Buttons */
 .timer-buttons {
     display: flex;
     justify-content: space-between;
@@ -88,13 +98,13 @@ input[type="text"], input[type="number"] {
 button {
     border: none;
     outline: none;
-    padding: 16px 50px; /* Sesuaikan padding sesuai kebutuhan */
+    padding: 16px 50px;
     background: #ff5945;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
     border-radius: 40px;
-    width: 150px; /* Menetapkan lebar tetap untuk tombol */
+    width: 150px;
     text-align: center;
 }
 
@@ -102,7 +112,7 @@ button:hover {
     background-color: #d94636;
 }
 
-
+/* To-Do List Items */
 ul li {
     list-style: none;
     font-size: 17px;
@@ -162,8 +172,7 @@ ul li span:hover {
 @media (max-width: 768px) {
     body {
         flex-direction: column;
-        justify-content: flex-start;
-        padding: 20px;
+        padding: 10px;
         height: auto;
     }
 
