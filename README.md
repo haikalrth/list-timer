@@ -8,3 +8,5 @@ Penggunaan :
 4. Masukkan format waktu yang sesuai untuk timer, klik start untuk memulai timer.
 5. Klik stop untuk menghentikan timer.
 6. Klik Reset untuk menyetel ulang timer dan untuk menghentikan alarm jika timer sudah berjalan habis
+
+Live Site: https://haikalrth.github.io/list-timer/
